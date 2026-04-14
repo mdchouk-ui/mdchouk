@@ -601,6 +601,8 @@ function normalizeUrl(u) {
   if (!u) return '';
   return /^https?:\/\//i.test(u) ? u : 'https://' + u;
 }
+
+function refreshCats() {
   cats = [...new Set(tasks.filter(t=>t.category&&!t.deleted).map(t=>t.category))].sort();
 }
 
