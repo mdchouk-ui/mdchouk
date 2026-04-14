@@ -597,7 +597,10 @@ let tasks = [], cats = [];
 let filterStatus = 'all', filterCat = '', sortBy = 'date';
 let importantNew = false;
 
-function refreshCats() {
+function normalizeUrl(u) {
+  if (!u) return '';
+  return /^https?:\/\//i.test(u) ? u : 'https://' + u;
+}
   cats = [...new Set(tasks.filter(t=>t.category&&!t.deleted).map(t=>t.category))].sort();
 }
 
@@ -782,7 +785,7 @@ listEl.addEventListener('blur', e => {
     return;
   }
   if (e.target.classList.contains('task-link-input')) {
-    const lnk = e.target.value.trim();
+    const lnk = normalizeUrl(e.target.value.trim());
     tasks = tasks.map(t=>t.id===id?{...t,link:lnk}:t);
     render(); dbUpdate(id, {link:lnk});
     return;
@@ -895,7 +898,7 @@ async function addTask() {
   if (!txt) return;
   const cat  = document.getElementById('new-cat').value.trim();
   const date = document.getElementById('new-date').value;
-  const link = document.getElementById('new-link').value.trim();
+  const link = normalizeUrl(document.getElementById('new-link').value.trim());
   addCat(cat);
 
   const tempId = -Date.now();
