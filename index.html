@@ -49,7 +49,6 @@
     overflow: hidden;
   }
 
-  /* Bloc terracotta décoratif en bas à droite */
   #accueil::before {
     content: '';
     position: absolute; right: 0; bottom: 0;
@@ -60,7 +59,6 @@
     pointer-events: none;
   }
 
-  /* Ligne décorative verticale */
   #accueil::after {
     content: '';
     position: absolute; left: 2.5rem; top: 8rem; bottom: 3rem;
@@ -70,10 +68,37 @@
     pointer-events: none;
   }
 
-  .hero-inner {
+  /* Hero — 3 zones : nom / photo / bio+cta */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 0 4rem;
     position: relative; z-index: 1;
-    max-width: 820px;
+  }
+
+  .hero-name-area {
+    grid-column: 1; grid-row: 1;
     padding-left: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-bio-area {
+    grid-column: 1; grid-row: 2;
+    padding-left: 2rem;
+  }
+
+  .hero-photo-col {
+    grid-column: 2; grid-row: 1 / 3;
+    align-self: stretch;
+    min-height: 420px;
+  }
+
+  /* La photo remplit toute la colonne */
+  .hero-photo-col .hero-photo {
+    height: 100%;
+    min-height: 420px;
   }
 
   .hero-label {
@@ -83,9 +108,10 @@
 
   .hero-name {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(5rem, 12vw, 10rem);
+    font-size: clamp(3rem, 7vw, 9rem);
     line-height: 0.9; color: var(--brun); letter-spacing: 0.02em;
     margin-bottom: 2rem;
+    white-space: nowrap;
   }
   .hero-name em { color: var(--terra); font-style: normal; }
 
@@ -107,6 +133,87 @@
   .btn-terra:hover { background: var(--terra2); }
   .btn-outline-brun { border: 1.5px solid var(--brun); color: var(--brun); }
   .btn-outline-brun:hover { background: var(--brun); color: var(--sable); }
+
+  /* ── PLACEHOLDERS PHOTO ── */
+  .photo-placeholder {
+    background: var(--sable2);
+    border: 2px dashed rgba(74,46,26,0.2);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    color: var(--brun2);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* quand une vraie image est dedans, elle prend toute la place */
+  .photo-placeholder img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  .photo-placeholder-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(200,90,47,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  /* Photo portrait hero */
+  .hero-photo {
+    height: 480px;
+    position: relative; z-index: 1;
+  }
+
+  /* Photos films — dans les cartes */
+  .film-photo {
+    height: 200px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px dashed rgba(242,232,213,0.15);
+    background: rgba(242,232,213,0.05);
+    color: rgba(242,232,213,0.45);
+  }
+
+  .film-photo .photo-placeholder-icon {
+    background: rgba(242,232,213,0.08);
+  }
+
+  /* Photos section mitchou */
+  .mitchou-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .mitchou-photo {
+    height: 180px;
+    background: rgba(0,0,0,0.1);
+    border: 2px dashed rgba(242,232,213,0.2);
+    color: rgba(242,232,213,0.45);
+  }
+
+  .mitchou-photo .photo-placeholder-icon {
+    background: rgba(242,232,213,0.08);
+  }
+
+  .mitchou-photo-full {
+    grid-column: 1 / -1;
+    height: 220px;
+  }
 
   .hero-bottom {
     position: relative; z-index: 1;
@@ -194,13 +301,26 @@
   footer .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--ocre2); letter-spacing: 0.08em; }
 
   /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .hero-name-area  { grid-column: 1; grid-row: 1; }
+    .hero-photo-col  { grid-column: 1; grid-row: 2; min-height: 260px; margin: 1.5rem 0; }
+    .hero-bio-area   { grid-column: 1; grid-row: 3; }
+    .hero-photo { height: 100%; min-height: 260px; max-width: 100%; }
+  }
   @media (max-width: 768px) {
     nav ul { display: none; }
     #accueil { padding: 6rem 1.5rem 2.5rem; }
     #accueil::after { left: 1.5rem; }
-    .hero-inner { padding-left: 1.2rem; }
+    .hero-name-area { padding-left: 1.2rem; padding-bottom: 0; }
+    .hero-bio-area  { padding-left: 1.2rem; }
     .films-grid { grid-template-columns: 1fr; }
     .mitchou-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .mitchou-photos { grid-template-columns: 1fr; }
+    .mitchou-photo-full { grid-column: 1; }
     .contact-layout { grid-template-columns: 1fr; }
     .contact-deco { display: none; }
     .section-inner { padding: 4rem 1.5rem; }
@@ -211,7 +331,7 @@
 <body>
 
 <nav>
-  <a href="#accueil" class="logo">Marco D Chouk</a>
+  <a href="#accueil" class="logo"> D Chouk</a>
   <ul>
     <li><a href="#parcours">Parcours</a></li>
     <li><a href="#films">Films</a></li>
@@ -222,18 +342,38 @@
 
 <!-- HERO -->
 <section id="accueil">
-  <div class="hero-inner">
-    <p class="hero-label">Entrepreneur · Artiste · Explorateur</p>
-    <h1 class="hero-name">Marco&nbsp;<em>D Chouk</em></h1>
-    <p class="hero-bio">
-Il rêvait d’un monde meilleur à travers ses projets d’entrepreneur.<br>
-Puis il a décidé de suivre ses rêves — autrement — et de partir à la rencontre du monde tel qu’il est.
-    </p>
-    <div class="hero-cta">
-      <a href="#mitchou" class="btn btn-terra">Le projet Mitchou Nami</a>
-      <a href="#parcours" class="btn btn-outline-brun">Son parcours</a>
+  <div class="hero-grid">
+
+    <!-- Zone 1 : label + nom -->
+    <div class="hero-name-area">
+      <p class="hero-label">Entrepreneur · Artiste · Explorateur</p>
+      <h1 class="hero-name">Marco&nbsp;<em>D Chouk</em></h1>
     </div>
+
+    <!-- Zone 2 : photo portrait — colonne droite desktop, entre nom et bio sur mobile -->
+    <div class="hero-photo-col">
+      <div class="photo-placeholder hero-photo">
+        <!-- <img src="photo-marco.jpg" alt="Marco D Chouk"> -->
+        <div class="photo-placeholder-icon">📷</div>
+        <span>Photo de Marco D Chouk</span>
+        <span style="font-size:0.68rem;opacity:0.6;font-weight:400;text-transform:none;letter-spacing:0;">Remplacer par : &lt;img src="photo-marco.jpg"&gt;</span>
+      </div>
+    </div>
+
+    <!-- Zone 3 : bio + cta -->
+    <div class="hero-bio-area">
+      <p class="hero-bio">
+        Il rêvait d'un monde meilleur à travers ses projets d'entrepreneur.<br>
+        Puis il a décidé de suivre ses rêves — autrement — et de partir à la rencontre du monde tel qu'il est.
+      </p>
+      <div class="hero-cta">
+        <a href="#mitchou" class="btn btn-terra">Le projet Mitchou Nami</a>
+        <a href="#parcours" class="btn btn-outline-brun">Son parcours</a>
+      </div>
+    </div>
+
   </div>
+
   <div class="hero-bottom">
     <div class="hero-bottom-item">Marseille, France</div>
     <div class="hero-bottom-item">Né en 1983</div>
@@ -247,15 +387,13 @@ Puis il a décidé de suivre ses rêves — autrement — et de partir à la ren
     <p class="section-tag">Qui est-il</p>
     <h2 class="section-title">Le parcours</h2>
     <p class="parcours-intro">
-Marc-David Choukroun — alias Marco D Chouk — a longtemps construit.<br>
-Des projets, des équipes, des structures.<br><br>
-
-Puis quelque chose a lâché.<br>
-Ou peut-être s’est ouvert.<br><br>
-
-Depuis, il cherche autrement.<br>
-Par le corps, par la route, par les rencontres.
-</p>
+      Marc-David Choukroun — alias Marco D Chouk — a longtemps construit.<br>
+      Des projets, des équipes, des structures.<br><br>
+      Puis quelque chose a lâché.<br>
+      Ou peut-être s'est ouvert.<br><br>
+      Depuis, il cherche autrement.<br>
+      Par le corps, par la route, par les rencontres.
+    </p>
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-year">2004 — 2010</div>
@@ -281,13 +419,7 @@ Par le corps, par la route, par les rencontres.
       <div class="timeline-item">
         <div class="timeline-year">2024</div>
         <div class="timeline-title">La bascule — Marco D Chouk, artiste vidéaste</div>
-        <p class="timeline-desc">
-Il quitte progressivement les structures qu’il a construites pour entrer dans une zone plus incertaine.
-Un voyage au Pérou agit comme un point de bascule.
-Le film <em>Rêve Blanc</em> naît de cette traversée.
-Puis vient le chemin de Saint-Jacques.
-Marco D Chouk apparaît — non pas comme un rôle, mais comme une extension.
-</p>      
+        <p class="timeline-desc">Il quitte progressivement les structures qu'il a construites pour entrer dans une zone plus incertaine. Un voyage au Pérou agit comme un point de bascule. Le film <em>Rêve Blanc</em> naît de cette traversée. Puis vient le chemin de Saint-Jacques. Marco D Chouk apparaît — non pas comme un rôle, mais comme une extension.</p>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2026</div>
@@ -304,29 +436,43 @@ Marco D Chouk apparaît — non pas comme un rôle, mais comme une extension.
     <p class="section-tag">Création</p>
     <h2 class="section-title">Films</h2>
     <div class="films-grid">
+
       <div class="film-card">
         <div class="film-banner"></div>
+        <!-- PHOTO FILM 1 — remplacer le src par une image du film -->
+        <div class="photo-placeholder film-photo">
+          <!-- <img src="voy-a-pagar.jpg" alt="Voy a Pagar y me Voy"> -->
+          <div class="photo-placeholder-icon">🎬</div>
+          <span>Image du film</span>
+          <span style="font-size:0.65rem;opacity:0.5;font-weight:400;text-transform:none;letter-spacing:0;">Voy a Pagar y me Voy</span>
+        </div>
         <div class="film-body">
           <div class="film-year">2025</div>
           <h3 class="film-title">Voy a Pagar<br>y me Voy</h3>
           <p class="film-desc">
-  Au printemps 2025, Marco D Chouk part sur le Camino portugais.
-  Un chemin traversé par la joie, la spontanéité et une forme d’absurde léger.<br><br>
-
-  Entre rencontres, moments improvisés et rituels éphémères,
-  le film capte ce qui surgit en route : des tours de magie dans les albergues,
-  des histoires partagées autour d’un Kas Naranja, des couronnes de fleurs,
-  des “Buen Camino !” répétés à l’infini.<br><br>
-
-  Et, comme un fil invisible, une phrase qui revient :
-  “Je vais payer et je vais partir.”
-</p>
+            Au printemps 2025, Marco D Chouk part sur le Camino portugais.
+            Un chemin traversé par la joie, la spontanéité et une forme d'absurde léger.<br><br>
+            Entre rencontres, moments improvisés et rituels éphémères,
+            le film capte ce qui surgit en route : des tours de magie dans les albergues,
+            des histoires partagées autour d'un Kas Naranja, des couronnes de fleurs,
+            des "Buen Camino !" répétés à l'infini.<br><br>
+            Et, comme un fil invisible, une phrase qui revient :
+            "Je vais payer et je vais partir."
+          </p>
           <span class="film-status status-dispo">Disponible sur Vimeo</span>
           <a href="https://vimeo.com/1145291141" class="film-link" target="_blank">Voir le film →</a>
         </div>
       </div>
+
       <div class="film-card">
         <div class="film-banner"></div>
+        <!-- PHOTO FILM 2 — remplacer le src par une image du film -->
+        <div class="photo-placeholder film-photo">
+          <!-- <img src="reve-blanc.jpg" alt="Rêve Blanc"> -->
+          <div class="photo-placeholder-icon">🎬</div>
+          <span>Image du film</span>
+          <span style="font-size:0.65rem;opacity:0.5;font-weight:400;text-transform:none;letter-spacing:0;">Rêve Blanc</span>
+        </div>
         <div class="film-body">
           <div class="film-year">2024 — en cours</div>
           <h3 class="film-title">Rêve Blanc</h3>
@@ -334,6 +480,7 @@ Marco D Chouk apparaît — non pas comme un rôle, mais comme une extension.
           <span class="film-status status-prod">En production</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -346,37 +493,49 @@ Marco D Chouk apparaît — non pas comme un rôle, mais comme une extension.
     <div class="mitchou-layout">
       <div>
         <p class="mitchou-desc">
-Mitchou Nami est un personnage.
-Mais surtout une façon d’entrer en relation.<br><br>
-
-À vélo, il traverse la France en tirant une Terre.
-Pas une idée. Une vraie présence.
-Quelque chose qui tourne, qui attire, qui interroge.
-</p>
+          Mitchou Nami est un personnage.
+          Mais surtout une façon d'entrer en relation.<br><br>
+          À vélo, il traverse la France en tirant une Terre.
+          Pas une idée. Une vraie présence.
+          Quelque chose qui tourne, qui attire, qui interroge.
+        </p>
         <div class="mitchou-question">
           <p>"Si tu devais sauver une seule chose sur Terre, ce serait quoi ?"</p>
         </div>
         <p class="mitchou-desc">
-Ceux qui répondent deviennent des <strong style="color:var(--sable);">Sauve-Terre</strong>.<br><br>
+          Ceux qui répondent deviennent des <strong style="color:var(--sable);">Sauve-Terre</strong>.<br><br>
+          Pas des militants. Pas des experts.<br><br>
+          Juste des gens qui nomment quelque chose qu'ils aiment assez pour vouloir le garder vivant.<br><br>
+          Le projet grandit avec eux.
+          Un documentaire vivant, une collection de réponses, une autre manière de parler de la Terre.
+        </p>
 
-Pas des militants.
-Pas des experts.<br><br>
+        <!-- PHOTOS MITCHOU + CHARRETTE -->
+        <div class="mitchou-photos">
+          <!-- Photo Mitchou Nami -->
+          <div class="photo-placeholder mitchou-photo">
+            <!-- <img src="mitchou-nami.jpg" alt="Mitchou Nami"> -->
+            <div class="photo-placeholder-icon">🌍</div>
+            <span>Mitchou Nami</span>
+          </div>
+          <!-- Photo La Charrette Terre -->
+          <div class="photo-placeholder mitchou-photo">
+            <!-- <img src="charrette-terre.jpg" alt="La Charrette Terre"> -->
+            <div class="photo-placeholder-icon">🚲</div>
+            <span>La Charrette Terre</span>
+          </div>
+        </div>
 
-Juste des gens qui nomment quelque chose qu’ils aiment assez pour vouloir le garder vivant.<br><br>
-
-Le projet grandit avec eux.
-Un documentaire vivant, une collection de réponses, une autre manière de parler de la Terre.
-</p>
-        <div class="mitchou-asso">
+        <div class="mitchou-asso" style="margin-top:2rem;">
           <h4>La Seiche Frite</h4>
           <p>
-La Seiche Frite est une structure légère.
-Un espace pour faire exister des projets libres, à la frontière entre art, écologie et rencontre.<br><br>
-
-Mitchou Nami en est le premier mouvement.
-</p>
+            La Seiche Frite est une structure légère.
+            Un espace pour faire exister des projets libres, à la frontière entre art, écologie et rencontre.<br><br>
+            Mitchou Nami en est le premier mouvement.
+          </p>
         </div>
       </div>
+
       <div class="mitchou-infos">
         <div class="info-block">
           <div class="info-label">Départ du Tour de France</div>
@@ -408,7 +567,7 @@ Mitchou Nami en est le premier mouvement.
         <p class="section-tag">Rencontrons-nous</p>
         <h2 class="section-title">Contact</h2>
         <p class="contact-line">Pour parler du projet, d'une collaboration, d'un partenariat — ou simplement répondre à la question.</p>
-        <a href="mailto:mdchouk@gmail.com" class="contact-email">mdchouk@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#a7cac3c4cfc8d2cce7c0cac6cecb89c4c8ca" class="contact-email"><span class="__cf_email__" data-cfemail="c8a5acaba0a7bda388afa5a9a1a4e6aba7a5">[email&#160;protected]</span></a>
         <div class="contact-social">
           <a href="https://instagram.com/mdchouk" class="social-btn" target="_blank">Instagram</a>
           <a href="https://vimeo.com/user100973876" class="social-btn" target="_blank">Vimeo</a>
@@ -419,10 +578,4 @@ Mitchou Nami en est le premier mouvement.
   </div>
 </section>
 
-<footer>
-  <p>© 2026 Marco D Chouk — La Seiche Frite</p>
-  <span class="footer-logo">Marco D Chouk</span>
-</footer>
-
-</body>
-</html>
+<foot
