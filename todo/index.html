@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Marco Todo Liste</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -34,6 +34,7 @@ body {
   background: rgba(242,232,213,0.06); border: 1px solid rgba(242,232,213,0.18); border-radius: 2px;
   padding: 0 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--sable);
   letter-spacing: 0.18em; text-align: center; margin-bottom: 10px; transition: border-color 0.2s;
+  font-size: 16px;
 }
 #pwd-input::placeholder { color: rgba(242,232,213,0.28); letter-spacing: 0.1em; }
 #pwd-input:focus { outline: none; border-color: var(--ocre); }
@@ -541,9 +542,9 @@ async function hashPwd(pwd) {
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
-function isLoggedIn() { return sessionStorage.getItem(SESSION_KEY) === '1'; }
-function login()      { sessionStorage.setItem(SESSION_KEY, '1'); }
-function logout()     { sessionStorage.removeItem(SESSION_KEY); location.reload(); }
+function isLoggedIn() { return localStorage.getItem(SESSION_KEY) === '1'; }
+function login()      { localStorage.setItem(SESSION_KEY, '1'); }
+function logout()     { localStorage.removeItem(SESSION_KEY); location.reload(); }
 
 // ── Converters DB ↔ local ──
 function fromDb(r) {
