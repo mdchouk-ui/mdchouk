@@ -68,7 +68,6 @@
     pointer-events: none;
   }
 
-  /* Hero — 3 zones : nom / photo / bio+cta */
   .hero-grid {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
@@ -95,7 +94,6 @@
     min-height: 420px;
   }
 
-  /* La photo remplit toute la colonne */
   .hero-photo-col .hero-photo {
     height: 100%;
     min-height: 420px;
@@ -155,7 +153,6 @@
     overflow: hidden;
   }
 
-  /* quand une vraie image est dedans, elle prend toute la place */
   .photo-placeholder img {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
@@ -171,14 +168,12 @@
     font-size: 1.2rem;
   }
 
-  /* Photo portrait hero */
   .hero-photo {
     height: 100%;
     min-height: 420px;
     position: relative; z-index: 1;
   }
 
-  /* Photos films — dans les cartes */
   .film-photo {
     height: 200px;
     border-radius: 0;
@@ -192,7 +187,6 @@
     background: rgba(242,232,213,0.08);
   }
 
-  /* Photos section mitchou */
   .mitchou-photos {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -234,21 +228,6 @@
   .section-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.8rem; }
   .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1; color: var(--brun); margin-bottom: 3rem; letter-spacing: 0.02em; }
 
-  /* PARCOURS */
-  #parcours { background: var(--blanc); }
-  .parcours-intro { font-family: 'Lora', serif; font-size: 1.18rem; line-height: 1.82; max-width: 660px; color: var(--brun2); margin-bottom: 4rem; font-style: italic; }
-  .timeline { position: relative; padding-left: 2rem; }
-  .timeline::before { content: ''; position: absolute; left: 0; top: 0.4rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--terra), var(--ocre), var(--sauge)); }
-  .timeline-item { position: relative; padding: 0 0 3rem 2rem; }
-  .timeline-item::before { content: ''; position: absolute; left: -0.44rem; top: 0.4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--blanc); border: 2px solid var(--terra); }
-  .timeline-year { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.1em; color: var(--terra); margin-bottom: 0.3rem; }
-  .timeline-title { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--brun); margin-bottom: 0.5rem; }
-  .timeline-desc { color: var(--brun2); font-size: 0.97rem; line-height: 1.72; max-width: 560px; }
-  .ruche-stats { display: flex; gap: 1rem; margin-top: 1.2rem; flex-wrap: wrap; }
-  .ruche-stat { background: var(--sable); border-left: 3px solid var(--ocre); padding: 0.5rem 1rem; border-radius: 0 3px 3px 0; }
-  .ruche-stat strong { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--terra); display: block; line-height: 1; }
-  .ruche-stat span { font-size: 0.72rem; color: var(--brun2); text-transform: uppercase; letter-spacing: 0.08em; }
-
   /* FILMS */
   #films { background: var(--brun); }
   #films .section-title { color: var(--sable); }
@@ -285,6 +264,21 @@
   .info-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ocre2); margin-bottom: 0.4rem; }
   .info-value { font-size: 0.97rem; color: var(--sable); line-height: 1.5; }
   .info-value strong { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; display: block; line-height: 1; }
+
+  /* PARCOURS */
+  #parcours { background: var(--blanc); }
+  .parcours-intro { font-family: 'Lora', serif; font-size: 1.18rem; line-height: 1.82; max-width: 660px; color: var(--brun2); margin-bottom: 4rem; font-style: italic; }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0.4rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--terra), var(--ocre), var(--sauge)); }
+  .timeline-item { position: relative; padding: 0 0 3rem 2rem; }
+  .timeline-item::before { content: ''; position: absolute; left: -0.44rem; top: 0.4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--blanc); border: 2px solid var(--terra); }
+  .timeline-year { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.1em; color: var(--terra); margin-bottom: 0.3rem; }
+  .timeline-title { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 600; color: var(--brun); margin-bottom: 0.5rem; }
+  .timeline-desc { color: var(--brun2); font-size: 0.97rem; line-height: 1.72; max-width: 560px; }
+  .ruche-stats { display: flex; gap: 1rem; margin-top: 1.2rem; flex-wrap: wrap; }
+  .ruche-stat { background: var(--sable); border-left: 3px solid var(--ocre); padding: 0.5rem 1rem; border-radius: 0 3px 3px 0; }
+  .ruche-stat strong { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--terra); display: block; line-height: 1; }
+  .ruche-stat span { font-size: 0.72rem; color: var(--brun2); text-transform: uppercase; letter-spacing: 0.08em; }
 
   /* CONTACT */
   #contact { background: var(--sable2); }
@@ -334,9 +328,9 @@
 <nav>
   <a href="#accueil" class="logo">Marco D Chouk</a>
   <ul>
-    <li><a href="#parcours">Parcours</a></li>
     <li><a href="#films">Films</a></li>
     <li><a href="#mitchou">Mitchou Nami</a></li>
+    <li><a href="#parcours">Parcours</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -345,20 +339,17 @@
 <section id="accueil">
   <div class="hero-grid">
 
-    <!-- Zone 1 : label + nom -->
     <div class="hero-name-area">
       <p class="hero-label">Entrepreneur · Artiste · Explorateur</p>
       <h1 class="hero-name">Marco&nbsp;<em>D Chouk</em></h1>
     </div>
 
-    <!-- Zone 2 : photo portrait — colonne droite desktop, entre nom et bio sur mobile -->
     <div class="hero-photo-col">
       <div class="photo-placeholder hero-photo">
         <img src="marco.jpg" alt="Marco D Chouk">
       </div>
     </div>
 
-    <!-- Zone 3 : bio + cta -->
     <div class="hero-bio-area">
       <p class="hero-bio">
         Il rêvait d'un monde meilleur à travers ses projets d'entrepreneur.<br>
@@ -375,6 +366,113 @@
   <div class="hero-bottom">
     <div class="hero-bottom-item">Marseille, France</div>
     <div class="hero-bottom-item">Mitchou Nami — Tour de France 2027</div>
+  </div>
+</section>
+
+<!-- FILMS -->
+<section id="films">
+  <div class="section-inner">
+    <p class="section-tag">Création</p>
+    <h2 class="section-title">Films</h2>
+    <div class="films-grid">
+
+      <div class="film-card">
+        <div class="film-banner"></div>
+        <div class="photo-placeholder film-photo">
+          <img src="voy-a-pagar.jpg" alt="Voy a Pagar y me Voy">
+        </div>
+        <div class="film-body">
+          <div class="film-year">2025</div>
+          <h3 class="film-title">Voy a Pagar<br>y me Voy</h3>
+          <p class="film-desc">
+            Au printemps 2025, Marco D Chouk part sur le Camino portugais.
+            Un chemin traversé par la joie, la spontanéité et une forme d'absurde léger.<br><br>
+            Entre rencontres, moments improvisés et rituels éphémères,
+            le film capte ce qui surgit en route : des tours de magie dans les albergues,
+            des histoires partagées autour d'un Kas Naranja, des couronnes de fleurs,
+            des "Buen Camino !" répétés à l'infini.<br><br>
+            Et, comme un fil invisible, une phrase qui revient :
+            "Je vais payer et je vais partir."
+          </p>
+          <span class="film-status status-dispo">Disponible sur Vimeo</span>
+          <a href="https://vimeo.com/1145291141" class="film-link" target="_blank">Voir le film →</a>
+        </div>
+      </div>
+
+      <div class="film-card">
+        <div class="film-banner"></div>
+        <div class="photo-placeholder film-photo">
+          <!-- <img src="reve-blanc.jpg" alt="Rêve Blanc"> -->
+          <div class="photo-placeholder-icon">🎬</div>
+          <span>Image du film</span>
+          <span style="font-size:0.65rem;opacity:0.5;font-weight:400;text-transform:none;letter-spacing:0;">Rêve Blanc</span>
+        </div>
+        <div class="film-body">
+          <div class="film-year">2024 — en cours</div>
+          <h3 class="film-title">Rêve Blanc</h3>
+          <p class="film-desc">Film documentaire exploratoire dont les premières images ont été tournées au Pérou. Une œuvre en construction sur la transformation intérieure et le chemin des rêves.</p>
+          <span class="film-status status-prod">En production</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MITCHOU -->
+<section id="mitchou">
+  <div class="section-inner">
+    <p class="section-tag">Projet 2026 — 2027</p>
+    <h2 class="section-title">Mitchou Nami<br>&amp; les Sauve-Terre</h2>
+    <div class="mitchou-layout">
+      <div>
+        <p class="mitchou-desc">
+          Mitchou Nami est un personnage.
+          Mais surtout une façon d'entrer en relation.<br><br>
+          À vélo, il traverse la France en portant la Terre.
+        </p>
+        <div class="mitchou-question">
+          <p>"Si tu devais sauver une seule chose sur Terre, ce serait quoi ?"</p>
+        </div>
+        <p class="mitchou-desc">
+          Ceux qui répondent deviennent des <strong style="color:var(--sable);">Sauve-Terre</strong>.<br><br>
+          Pas des militants. Pas des experts.<br><br>
+          Juste des gens qui nomment quelque chose qu'ils aiment assez pour vouloir le garder vivant.<br><br>
+          Le projet grandit avec eux.
+          Un documentaire vivant, une collection de réponses, une autre manière de parler de la Terre.
+        </p>
+
+        <div class="mitchou-photos">
+          <div class="photo-placeholder mitchou-photo">
+            <!-- <img src="mitchou-nami.jpg" alt="Mitchou Nami"> -->
+            <div class="photo-placeholder-icon">🌍</div>
+            <span>Mitchou Nami</span>
+          </div>
+          <div class="photo-placeholder mitchou-photo">
+            <!-- <img src="charrette-terre.jpg" alt="La Charrette Terre"> -->
+            <div class="photo-placeholder-icon">🚲</div>
+            <span>La Charrette Terre</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mitchou-infos">
+        <div class="info-block">
+          <div class="info-label">Départ du Tour de France</div>
+          <div class="info-value"><strong>Printemps 2027</strong></div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">La question</div>
+          <div class="info-value">Posée en direct, dans la rue, sur les places, face aux gens — sans filtre</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">Format</div>
+          <div class="info-value">Documentaire vivant · Transmédia · Performance itinérante</div>
+        </div>
+        <a href="https://instagram.com/mitchounami" class="btn btn-outline-brun" style="text-align:center;border-color:rgba(242,232,213,0.45);color:var(--sable);display:block;margin-top:0.5rem;">Instagram Mitchou</a>
+        <a href="#" class="btn btn-outline-brun" style="text-align:center;border-color:rgba(242,232,213,0.45);color:var(--sable);display:block;margin-top:0.5rem;">Voir le site → (Bientôt !)</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -421,117 +519,6 @@
   </div>
 </section>
 
-<!-- FILMS -->
-<section id="films">
-  <div class="section-inner">
-    <p class="section-tag">Création</p>
-    <h2 class="section-title">Films</h2>
-    <div class="films-grid">
-
-      <div class="film-card">
-        <div class="film-banner"></div>
-        <div class="photo-placeholder film-photo">
-          <img src="voy-a-pagar.jpg" alt="Voy a Pagar y me Voy">
-        </div>
-        <div class="film-body">
-          <div class="film-year">2025</div>
-          <h3 class="film-title">Voy a Pagar<br>y me Voy</h3>
-          <p class="film-desc">
-            Au printemps 2025, Marco D Chouk part sur le Camino portugais.
-            Un chemin traversé par la joie, la spontanéité et une forme d'absurde léger.<br><br>
-            Entre rencontres, moments improvisés et rituels éphémères,
-            le film capte ce qui surgit en route : des tours de magie dans les albergues,
-            des histoires partagées autour d'un Kas Naranja, des couronnes de fleurs,
-            des "Buen Camino !" répétés à l'infini.<br><br>
-            Et, comme un fil invisible, une phrase qui revient :
-            "Je vais payer et je vais partir."
-          </p>
-          <span class="film-status status-dispo">Disponible sur Vimeo</span>
-          <a href="https://vimeo.com/1145291141" class="film-link" target="_blank">Voir le film →</a>
-        </div>
-      </div>
-
-      <div class="film-card">
-        <div class="film-banner"></div>
-        <!-- PHOTO FILM 2 — remplacer le src par une image du film -->
-        <div class="photo-placeholder film-photo">
-          <!-- <img src="reve-blanc.jpg" alt="Rêve Blanc"> -->
-          <div class="photo-placeholder-icon">🎬</div>
-          <span>Image du film</span>
-          <span style="font-size:0.65rem;opacity:0.5;font-weight:400;text-transform:none;letter-spacing:0;">Rêve Blanc</span>
-        </div>
-        <div class="film-body">
-          <div class="film-year">2024 — en cours</div>
-          <h3 class="film-title">Rêve Blanc</h3>
-          <p class="film-desc">Film documentaire exploratoire dont les premières images ont été tournées au Pérou. Une œuvre en construction sur la transformation intérieure et le chemin des rêves.</p>
-          <span class="film-status status-prod">En production</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- MITCHOU -->
-<section id="mitchou">
-  <div class="section-inner">
-    <p class="section-tag">Projet 2026 — 2027</p>
-    <h2 class="section-title">Mitchou Nami<br>&amp; les Sauve-Terre</h2>
-    <div class="mitchou-layout">
-      <div>
-        <p class="mitchou-desc">
-          Mitchou Nami est un personnage.
-          Mais surtout une façon d'entrer en relation.<br><br>
-          À vélo, il traverse la France en portant la Terre.
-        </p>
-        <div class="mitchou-question">
-          <p>"Si tu devais sauver une seule chose sur Terre, ce serait quoi ?"</p>
-        </div>
-        <p class="mitchou-desc">
-          Ceux qui répondent deviennent des <strong style="color:var(--sable);">Sauve-Terre</strong>.<br><br>
-          Pas des militants. Pas des experts.<br><br>
-          Juste des gens qui nomment quelque chose qu'ils aiment assez pour vouloir le garder vivant.<br><br>
-          Le projet grandit avec eux.
-          Un documentaire vivant, une collection de réponses, une autre manière de parler de la Terre.
-        </p>
-
-        <!-- PHOTOS MITCHOU + CHARRETTE -->
-        <div class="mitchou-photos">
-          <!-- Photo Mitchou Nami -->
-          <div class="photo-placeholder mitchou-photo">
-            <!-- <img src="mitchou-nami.jpg" alt="Mitchou Nami"> -->
-            <div class="photo-placeholder-icon">🌍</div>
-            <span>Mitchou Nami</span>
-          </div>
-          <!-- Photo La Charrette Terre -->
-          <div class="photo-placeholder mitchou-photo">
-            <!-- <img src="charrette-terre.jpg" alt="La Charrette Terre"> -->
-            <div class="photo-placeholder-icon">🚲</div>
-            <span>La Charrette Terre</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="mitchou-infos">
-        <div class="info-block">
-          <div class="info-label">Départ du Tour de France</div>
-          <div class="info-value"><strong>Printemps 2027</strong></div>
-        </div>
-        <div class="info-block">
-          <div class="info-label">La question</div>
-          <div class="info-value">Posée en direct, dans la rue, sur les places, face aux gens — sans filtre</div>
-        </div>
-        <div class="info-block">
-          <div class="info-label">Format</div>
-          <div class="info-value">Documentaire vivant · Transmédia · Performance itinérante</div>
-        </div>
-        <a href="https://instagram.com/mitchounami" class="btn btn-outline-brun" style="text-align:center;border-color:rgba(242,232,213,0.45);color:var(--sable);display:block;margin-top:0.5rem;">Instagram Mitchou</a>
-        <a href="#" class="btn btn-outline-brun" style="text-align:center;border-color:rgba(242,232,213,0.45);color:var(--sable);display:block;margin-top:0.5rem;">Voir le site → (Bientôt !)</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
@@ -551,4 +538,10 @@
   </div>
 </section>
 
-<foot
+<footer>
+  <span class="footer-logo">Marco D Chouk</span>
+  <p>© 2026 — La Seiche Frite</p>
+</footer>
+
+</body>
+</html>
